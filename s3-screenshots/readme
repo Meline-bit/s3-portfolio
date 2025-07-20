@@ -1,0 +1,63 @@
+# Amazon S3 Data Protection: Versioning, Object Lock & Replication
+
+This is a static portfolio project that documents how to protect data in **Amazon S3** against accidental deletion, overwrites, and application bugs using:
+
+- ✅ S3 Versioning  
+- 🔐 S3 Object Lock  
+- 🔁 S3 Cross-Region Replication (CRR)
+
+It includes visuals, configuration steps, and a live demo of a hosted documentation site.
+
+---
+
+## 🔒 Features Documented
+
+### 1. S3 Versioning
+- Enables keeping multiple versions of an object
+- Protects against unintended overwrites or deletions
+
+### 2. S3 Object Lock
+- Adds Write Once, Read Many (WORM) protection
+- Prevents object deletion or modification for a retention period
+
+### 3. S3 Replication
+- Cross-Region Replication (CRR)
+- Automatically replicates objects to a different bucket in another region
+
+---
+
+## 📸 Screenshots
+
+| Feature | Screenshot |
+|--------------------------|------------|
+| S3 Versioning Enabled | <img src="screenshots/01-s3-versioning-enabled.png" width="400"/> |
+| Object Lock Configuration| <img src="screenshots/02-object-lock-setup.png" width="400"/> |
+| Replication Setup | <img src="screenshots/03-cross-region-replication.png" width="400"/> |
+
+---
+
+## 🌐 Live Demo
+
+View the static documentation website here:  
+👉 [https://your-username.github.io/s3-documentation-site/](https://your-username.github.io/s3-documentation-site/)
+
+---
+
+## 🧰 Tech Stack
+
+- HTML5 & CSS3 (Static Site)
+- AWS S3 + Console screenshots
+- Hosted with GitHub Pages
+
+---
+
+## 👩‍💻 About the Author
+
+**Cameline Nasambu**  
+Aspiring Cloud and Automation Enthusiast | Finance-to-Tech Career Switcher  
+💼 [LinkedIn](https://www.linkedin.com/in/YOUR-LINK) | 🌐 [Portfolio](https://your-portfolio-link)
+
+---
+
+## 📁 Folder Structure
+
