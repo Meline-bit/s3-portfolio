@@ -1,89 +1,97 @@
-# 🗂️ Amazon S3 Configuration – Portfolio Documentation
+# 🛡️ Amazon S3 Data Protection Walkthrough
 
-This project documents my hands-on setup of key S3 features: **Versioning**, **Object Lock**, and **Cross-Region Replication**. The screenshots and steps demonstrate how I created and configured these features using the AWS Console.
+This project documents a hands-on walkthrough of how to **protect data on Amazon S3** from accidental deletion or corruption using:
 
----
+- ✅ S3 Versioning
+- 🔐 S3 Object Lock
+- 🔁 S3 Cross-Region Replication
 
-## 1️⃣ Creating the Source Bucket (`meline-bucket`)
-
-The first step involved creating a new S3 bucket named `meline-bucket`.
-
-![01 Create Bucket](screenshots/01-meline-bucket.png)
+The steps include screenshots and explanations, designed as part of my AWS learning journey and portfolio.
 
 ---
 
-## 2️⃣ Uploading an Object
+## 📁 1. Creating an S3 Bucket
 
-An object (file) was uploaded to `meline-bucket` to prepare for testing versioning and replication.
+- Navigate to **Amazon S3 > Create bucket**
+- Assign a unique name and select your preferred AWS Region
+- Enable the following options:
+  - ✅ Block all public access
+  - ✅ Enable bucket versioning
+  - *(Optional)*: Enable Object Lock (requires versioning to be enabled)
 
-![02 Upload File](screenshots/02-upload-melinebucket.png)
-
----
-
-## 3️⃣ Enabling Versioning
-
-Versioning was enabled on the source bucket. This allows multiple versions of the same object to be preserved.
-
-📌 **Why it matters:** Versioning protects against accidental deletions and allows recovery of previous object states.
-
-![03 Enable Versioning](screenshots/03-enabled-version-melinebucket.png)
+🖼️  
+![Create Bucket](screenshots/1-create-bucket.jpg)
 
 ---
 
-## 4️⃣ Creating Destination Bucket & Enabling Object Keys
+## 🔄 2. Enabling Versioning
 
-Created a destination bucket `meline2bucket` and enabled key settings for replication.
+Versioning helps retain, retrieve, and restore every version of every object stored in your bucket.
 
-![04 Destination Bucket](screenshots/04-meline2bucket-objectkeyenabled.png)
+- Go to your bucket > Properties
+- Scroll to **Bucket Versioning**
+- Click **Edit** > Enable > Save changes
 
----
-
-## 5️⃣ Enabling Object Lock
-
-Object Lock was enabled on the source bucket to prevent object deletions/modifications for a set period.
-
-📌 **Use case:** Ensures compliance and protection against accidental or malicious changes.
-
-![05 Object Lock Enabled](screenshots/05-enabled-objectlock.png)
+🖼️  
+![Enable Versioning](screenshots/2-versioning.jpg)
 
 ---
 
-## 6️⃣ Confirmed Lock on Destination Bucket
+## 🔐 3. Enabling Object Lock
 
-Confirmed that the destination bucket was configured to support Object Lock as well.
+Object Lock prevents object versions from being overwritten or deleted for a fixed amount of time or indefinitely.
 
-![06 Lock Confirmed](screenshots/06-meline2bucket-locked.png)
+- Enable **Object Lock** at bucket creation (required)
+- After creation:  
+  - Go to **Management > Object Lock**
+  - Create a **retention policy** (Governance or Compliance mode)
 
----
-
-## 7️⃣ Creating Replication Rule
-
-A replication rule was created to replicate objects from `meline-bucket` to `meline2bucket`.
-
-📌 **Key Details:**
-- Status: Enabled
-- Rule applies to all objects
-- Replicates delete markers and existing objects (optional)
-
-![07 Replication Rule](screenshots/07-creation-replicationrule.png)
+🖼️  
+![Enable Object Lock](screenshots/3-object-lock.jpg)
 
 ---
 
-## 8️⃣ Replication Configuration Complete
+## 🌍 4. Setting Up S3 Replication (Cross-Region)
 
-Final configuration screen showing the replication successfully set up.
+S3 Replication (CRR) allows you to copy objects automatically to a destination bucket in a different region for added resilience.
 
-![08 Replication Complete](screenshots/08-replication-configured.png)
+### Steps:
+- Create a destination bucket in a **different region**
+- On the **source bucket**:  
+  - Go to **Management > Replication rules**
+  - Create a rule and choose:
+    - ✅ Entire bucket or specific prefix
+    - ✅ Destination bucket and region
+    - ✅ IAM role for replication
+    - ✅ Option to replicate existing objects
+
+🖼️  
+![S3 Replication Rule](screenshots/4-replication-rule.jpg)
 
 ---
 
-## ✅ Summary
+## 🧠 Summary Table
 
-This S3 configuration demonstrates:
-- How to enable **versioning** for object-level recovery
-- How to use **Object Lock** for compliance and protection
-- How to set up **replication** to another bucket (cross-region supported)
-
-> 📂 All screenshots are stored inside the `screenshots/` folder.
+| Feature | Purpose |
+|----------------|------------------------------------------------------|
+| S3 Versioning | Recover from accidental deletion or overwrite |
+| Object Lock | Prevent deletion/modification based on policies |
+| S3 Replication | Cross-region backup for availability and durability |
 
 ---
+
+## 🙋 About Me
+
+I’m **Cameline Nasambu**, a finance professional transitioning into the tech space with a keen interest in **Cloud Computing** and **Digital Transformation**. Working on documenting hands-on projects to deepen my learning and hoping for a successful transition to bridge the gap between finance and tech.
+
+---
+
+## 📬 Contact
+
+- 📧 Email: [nasambucamelinen@gmail.com](mailto:nasambucamelinen@gmail.com)  
+- 💼 LinkedIn: [linkedin.com/in/camelinenyongesa-879b8320b](https://www.linkedin.com/in/camelinenyongesa-879b8320b)  
+- 🌐 Portfolio: [EC2 Portfolio Site](http://54.155.86.225)
+
+---
+
+> **Note**: This is a static documentation-only repository. For the full portfolio, visit my main GitHub or hosted EC2 site.
